@@ -5,6 +5,7 @@ Tool to check if a given host/service is reachable.
 
 
 Getting back on the horse using C and UNIX sockets. 
+_update_: I dared to ask myself if it could be done in python using low level library... python version added.
 
 So far this is yet another one-tcp-port-scanner (if you can call it a "port scanner").
 "There are many like it but this one is mine". Seriously... there are lots of examples of tools like this

@@ -20,15 +20,21 @@ try:
 except ValueError:
   print USAGE
   quit(1)
+try:
+    server_address=socket.gethostbyname(hostname)
+except socket.error as ex:
+  sys.stderr.write("Could not resolve hostname!\n")
+  quit(1)
 
-server_address=socket.gethostbyname(hostname)
+
 while(RETRIES):
+    print "Trying to connect to %s - %s on port %d ..." % (hostname,server_address,port_number)
     RETRIES=RETRIES-1
     try:
         socketid = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socketid.settimeout(TIMEOUT)
     except socket.error as ex:
-        print "Could not create socket"
+        sys.stderr.write( "Could not create socket!\n")
         quit(1)
     try:
         socketid.connect((server_address,port_number))
@@ -36,6 +42,7 @@ while(RETRIES):
         print "Connect failed"
         print "Sleeping %d seconds..." % SLEEP_SECONDS
         time.sleep(SLEEP_SECONDS)
+        socketid = None
         continue
     print "Connected."
     socketid.close()
