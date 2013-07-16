@@ -21,7 +21,7 @@ to a given port until successful.
 
 
 # USAGE
-
+<pre>
 usage: hostalive.py [-h] [--retries retries] [--timeout timeout]
                     [--sleep sleep]
                     hostname portnumber
@@ -41,7 +41,7 @@ optional arguments:
                      is 30). Along with --timeout, keep this to a sane high
                      value.
 
-
+</pre>
 
 
 ## Example:
