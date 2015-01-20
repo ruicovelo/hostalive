@@ -37,7 +37,7 @@ socketid = None
 
 
 while(retries):
-    print "Trying to connect to %s - %s on port %d ..." % (hostname,server_address,port_number)
+    print("Trying to connect to %s - %s on port %d ..." % (hostname,server_address,port_number))
     retries=retries-1
     try:
         socketid = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -49,13 +49,13 @@ while(retries):
 
     try:
         socketid.connect((server_address,port_number))
-        print "Connected!"
+        print("Connected!")
         socketid.close()
     except socket.error as ex:
-        print "Connect failed"
+        print("Connect failed")
         socketid = None
     if (keepalive and retries) or (socketid == None and retries):
-        print "Sleeping %d seconds before retrying..." % sleep_seconds
+        print("Sleeping %d seconds before retrying..." % sleep_seconds)
         time.sleep(sleep_seconds)
         continue
     socketid = None
